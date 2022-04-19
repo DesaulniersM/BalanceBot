@@ -10,6 +10,9 @@
 #define LED_TOGGLE_H_
 
 #include <avr/io.h>
+#define DEBUG_DDR DDRF
+#define DEBUG_LED4  PORTF0
+#define DEBUG_LED5  PORTF1
 
 #define initialize_LED(ddr, pin)  ddr |= (1 << pin)    // Make pin 13 be an output.
 

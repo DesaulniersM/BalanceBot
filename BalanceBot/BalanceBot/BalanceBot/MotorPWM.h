@@ -52,18 +52,16 @@
 #ifndef _LAB4_MOTOR_PWM_H
 #define _LAB4_MOTOR_PWM_H
 
-#define initialize_LED()  DDRC |= (1 << DDC7)    // Make pin 13 be an output.
 
-#define LED_ON()      PORTC |= (1 << PORTC7)   // Turn the LED on.
-
-#define LED_TOGGLE()  PORTC ^= (1 << PORTC7)   // Toggles the led state
-
-#define LED_OFF()     PORTC &= ~(1 << PORTC7)  // Turn the LED off.
 
 #include <avr/interrupt.h> // for interrupt enable/disable
 #include <avr/io.h>        // For pin input/output access
 #include <ctype.h>         // For int32_t type
 #include <stdbool.h>       // For bool
+#include "LED_TOGGLE.h"
+#include <stdlib.h>
+
+
 
 
 /**
@@ -72,7 +70,7 @@
  * Motor PWM outputs only as necessary.
  * @param [uint16_t] MAX_PWM is the maximum PWM value to use. This controls the PWM frequency.
  */
-void Motor_PWM_Init( uint16_t MAX_PWM );
+void Motor_PWM_Init( );
 
 /**
  * Function MotorPWM_Enable enables or disables the motor PWM outputs.
@@ -99,30 +97,10 @@ void Motor_PWM_Left( int16_t pwm );
 void Motor_PWM_Right( int16_t pwm );
 
 /**
- * Function Get_Motor_PWM_Left returns the current PWM duty cycle for the left motor. If disabled it returns what the
- * PWM duty cycle would be.
- * @return [int16_t] duty-cycle for the left motor's pwm
- */
-int16_t Get_Motor_PWM_Left();
-
-/**
- * Function Get_Motor_PWM_Right returns the current PWM duty cycle for the right motor. If disabled it returns what the
- * PWM duty cycle would be.
- * @return [int16_t] duty-cycle for the right motor's pwm
- */
-int16_t Get_Motor_PWM_Right();
-
-/**
- * Function Get_MAX_Motor_PWM() returns the PWM count that corresponds to 100 percent duty cycle (all on), this is the
- * same as the value written into ICR1 as (TOP).
- */
-uint16_t Get_MAX_Motor_PWM();
-
-/**
  * Function Set_MAX_Motor_PWM sets the maximum pwm count. This function sets the timer counts to zero because
  * the ICR1 can cause undesired behaviors if change dynamically below the current counts.  See page 128 of the
  * atmega32U4 datasheat.
  */
-void Set_MAX_Motor_PWM( uint16_t MAX_PWM );
+void Set_MAX_Motor_PWM( );
 
 #endif
