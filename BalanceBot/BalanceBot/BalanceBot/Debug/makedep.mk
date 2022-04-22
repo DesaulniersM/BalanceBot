@@ -8,6 +8,8 @@ I2C_MPU6050.c
 
 main.c
 
+matrix.c
+
 MotorPWM.c
 
 Ring_Buffer.c
