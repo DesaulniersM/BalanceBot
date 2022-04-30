@@ -44,6 +44,7 @@ float error = 0;
 float errorSum = 0;
 float lastError = 0;
 float CalibratedBalancePoint;
+// EEPROM ADDRESSES FOR theta offset, ygyro, xaccel, and zaccel calibrations
 float EEMEM EEPROM_ADDRESS;
 int i = 0;
 uint16_t pwm;
